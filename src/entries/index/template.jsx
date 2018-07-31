@@ -1,22 +1,24 @@
 import React from 'react';
-export default{
-    render : function(vm){
+import UserMenu from "@m/UserMenu";
+import SystemConfig from "@m/SystemConfig";
+import DataDictionary from "@m/DataDictionary";
+import Home from "@m/Home";
+import {Switch,Route} from "react-router-dom";
+
+export default {
+    render: function (vm) {
         return (
-            <div>
-				<div className="icon">
-					<i className={'glyphicon glyphicon-flash'}></i>
-				</div>
-                <h1>Hello bestreact!</h1>
+           <div>
+                <UserMenu/>
+                <main>
+                    <Switch>
+                            <Route exact path='/' component={Home}/>
+                            <Route exact path='/SystemConfig' component={SystemConfig}/>
+                            <Route exact path='/DataDictionary' component={DataDictionary}/>
+                    </Switch>
+                </main>
+           </div>
 
-				<div className="panel panel-default" style={{padding:20}}>
-                
-					<h2>vm.state.date is {vm.state.date.toLocaleTimeString()}.</h2>
-
-					<h2>vm.props.age is {vm.props.age}.</h2>
-				
-					<button className="btn btn-success" onClick={vm.buttonClick}>Click Me!</button>
-				</div>
-            </div>
         )
     }
 }
