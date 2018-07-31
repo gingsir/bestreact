@@ -19,7 +19,7 @@ class App extends Component {
 
     componentDidMount(){
         $("i").css({
-            fontSize:"5em"
+            color:"#379c2b"
         })
     }
 
@@ -30,7 +30,7 @@ class App extends Component {
 
 const renderDom = Component => {
     render(
-        <Component age={2}/>,
+        <Component age={25}/>,
         $("<div class='body-content'></div>").appendTo(document.body)[0]
     );
 }

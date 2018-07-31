@@ -11,13 +11,13 @@ module.exports = {
     assetsPublicPath: "/",
 
     host: "0.0.0.0",
-    port: 8080,
+    port: 80,
     autoOpenBrowser: false,
 
     project: {
       name: "br",
       backends: {
-        api: 80,
+        api: 10080,
       },
       f_users: {
         ljs: "127.0.0.1"
