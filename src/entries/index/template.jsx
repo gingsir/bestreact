@@ -12,9 +12,12 @@ export default {
                 <UserMenu/>
                 <main>
                     <Switch>
-                            <Route path='/Home' component={Home}/>
+
+                            <Route exact path='/' component={Home}/>
                             <Route path='/SystemConfig' component={SystemConfig}/>
-                            <Route path='/DataDictionary' component={DataDictionary}/>
+                            <Route path='/DataDictionary' render={(props) => (
+                                <DataDictionary {...props} data={{color:"red"}}/>
+                            )}/>
                     </Switch>
                 </main>
            </div>
