@@ -9,11 +9,15 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {date: new Date()};
+        this.state = {
+            date: new Date()
+            ,counter:0
+        };
+
+        this.buttonClick = this.buttonClick.bind(this);
     }
 
     render() {
-        console.log(this)
         return template.render(this);
     }
 
@@ -24,6 +28,8 @@ export default class Home extends Component {
     }
 
     buttonClick(){
-        location.href="/adm.html"
+        this.setState((prevState, props) => ({
+            counter: prevState.counter + 1
+        }));
     }
 }

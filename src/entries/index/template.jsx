@@ -12,9 +12,9 @@ export default {
                 <UserMenu/>
                 <main>
                     <Switch>
-                            <Route exact path='/' component={Home}/>
-                            <Route exact path='/SystemConfig' component={SystemConfig}/>
-                            <Route exact path='/DataDictionary' component={DataDictionary}/>
+                            <Route path='/Home' component={Home}/>
+                            <Route path='/SystemConfig' component={SystemConfig}/>
+                            <Route path='/DataDictionary' component={DataDictionary}/>
                     </Switch>
                 </main>
            </div>

@@ -12,10 +12,11 @@ export default{
                 
 					<h2>vm.state.date is {vm.state.date.toLocaleTimeString()}.</h2>
 
-					<h2>vm.props.age is {vm.props.age}.</h2>
-				
-					<button className="btn btn-success" onClick={vm.buttonClick}>Click Me! go to admin</button>
+					<h2>vm.props.match.isExact is {vm.props.match.path}.</h2>
 
+                    <h2>vm.state.counter is {vm.state.counter}.</h2>
+
+					<button className="btn btn-success" onClick={vm.buttonClick}>Click Me! </button>
 
 				</div>
             </div>
