@@ -13,8 +13,9 @@ module.exports = {
     */
     dll: [
       "jquery",
-      "bootstrap/dist/css/bootstrap.min.css",
-      "bootstrap/dist/js/bootstrap.min.js"
+      // "bootstrap/dist/css/bootstrap.min.css",
+      // "bootstrap/dist/js/bootstrap.min.js",
+      "semantic-ui-css/semantic.min.css"
     ]
   },
   output: {
@@ -56,8 +57,13 @@ module.exports = {
       // 处理 css 文件
       {
         test: /\.css$/,
-        use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader"]
+        use: ["style-loader", MiniCssExtractPlugin.loader,"css-loader"]
       }
+      //处理image
+        ,{
+            test : /.(jpg|png|jpeg)$/
+            ,use:['url-loader']
+        }
     ]
   }
 };

@@ -9,10 +9,9 @@ export default {
     render: function (vm) {
         return (
            <div>
-                <UserMenu/>
+               <UserMenu/>
                 <main>
                     <Switch>
-
                             <Route exact path='/' component={Home}/>
                             <Route path='/SystemConfig' component={SystemConfig}/>
                             <Route path='/DataDictionary' render={(props) => (

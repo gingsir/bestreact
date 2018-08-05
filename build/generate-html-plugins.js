@@ -46,7 +46,7 @@ class GenEntryNPage {
             new HtmlWebpackPlugin({
               chunks: ["manifest", key],
               filename: `${key}.html`,
-              // template:"./build/entry.html"
+                template:"./build/entry.html"
             })
           );
         }
