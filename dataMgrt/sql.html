@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>CREATE TABLE</h1>
+<code lang="sql" id="q1"></code>
+<h1>INSERT V1</h1>
+<pre lang="sql" id="q2"></pre>
+<h1>UPDATE V2</h1>
+<code lang="sql" id="q3"></code>
+</body>
+<script>
+
+    function getCreateColumn() {
+        var arr = [];
+        for (var i = 0; i < 200; i++) {
+            arr.push(",`column" + i + "` VARCHAR(100)")
+        }
+        return arr.join("")
+    }
+
+    var createTableSql = `
+    CREATE TABLE IF NOT EXISTS \`tb1\`(
+       \`id\` INT UNSIGNED AUTO_INCREMENT,
+       ,\`name\` VARCHAR(100) NOT NULL
+       ,\`version\` VARCHAR(40) NOT NULL
+       ,\`deleteAt\` INT UNSIGNED DEFAULT 0
+       ,\`defeatAt\` INT UNSIGNED DEFAULT 0
+       ${getCreateColumn()}
+       PRIMARY KEY ( \`id\` )
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `;
+
+    document.getElementById("q1").innerHTML = createTableSql;
+
+
+    function getInsertColumn() {
+        var obj = {
+            column : []
+            ,columnVal : []
+        }
+        for (var i = 0; i < 200; i++) {
+            obj.column.push(",column" + i )
+            obj.columnVal.push(",'column" + i+"'" )
+        }
+
+        return obj;
+    }
+
+    var iCol = getInsertColumn();
+
+    var insertV1Sql = `
+    #定义存储过程
+        delimiter //
+        DROP PROCEDURE IF EXISTS insert_test_val;
+        ##num_limit 要插入数据的数量,rand_limit 最大随机的数值
+        CREATE PROCEDURE insert_test_val(in num_limit int,in rand_limit int)
+        BEGIN
+
+        DECLARE i int default 1;
+        DECLARE a int default 1;
+        DECLARE b int default 1;
+        DECLARE c int default 1;
+
+        WHILE i<=num_limit do
+
+        set a = FLOOR(rand()*rand_limit);
+        set b = FLOOR(rand()*rand_limit);
+        set c = FLOOR(rand()*rand_limit);
+
+        INSERT INTO tb1 (name,version
+        ${iCol.column.join("")}
+        )
+        VALUES
+        (
+        UUID(),1
+        ${iCol.columnVal.join("")}
+        )
+
+        set i = i + 1;
+
+        END WHILE;
+
+        END
+        //
+
+        #调用存储过程
+        call insert_test_val(100000,10);
+    `;
+
+    document.getElementById("q2").innerHTML = insertV1Sql;
+</script>
+</html>
